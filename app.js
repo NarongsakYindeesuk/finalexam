@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
   res.render('index', {
     name: 'Narongsak Yindeesuk',
     studentId: '67130393',
-    github: 'https://github.com/narongsakyindeesuk/finalexam-67130393'
+    github: 'https://github.com/NarongsakYindeesuk/finalexam.git'
   });
 });
 
