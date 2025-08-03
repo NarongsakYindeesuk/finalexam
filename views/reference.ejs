@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>References</title>
+</head>
+<body>
+  <h1>Reference List</h1>
+  <form action="/reference/add" method="POST">
+    <input type="text" name="title" placeholder="ชื่ออ้างอิง (IEEE)" required>
+    <input type="text" name="pdf_url" placeholder="ลิงก์ PDF หรือ path เช่น /reference/example1.pdf" required>
+    <button type="submit">เพิ่มอ้างอิง</button>
+  </form>
+  <ul>
+    <% references.forEach(function(ref) { %>
+      <li>
+        <%= ref.title %>
+        <a href="<%= ref.pdf_url %>" target="_blank">PDF</a>
+        <form action="/reference/delete/<%= ref.id %>" method="POST" style="display:inline;" onsubmit="return confirm('ยืนยันลบอ้างอิงนี้?');">
+          <button type="submit">ลบ</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+  <a href="/">กลับหน้าแรก</a>
+</body>
+</html>
