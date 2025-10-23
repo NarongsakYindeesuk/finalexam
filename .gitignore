@@ -1,0 +1,6 @@
+*.log
+*.tmp
+waf-test-report.txt
+node_modules/
+.vscode/
+__pycache__/

@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx   # prebuilt image พร้อม ModSecurity+CRS
+    ports:
+      - "8080:80"
+    volumes:
+      - ./waf-nginx-crs/modsecurity.conf:/etc/modsecurity/modsecurity.conf:ro
+      - ./waf-nginx-crs/crs/:/etc/nginx/modsec/crs/:ro
+    depends_on:
+      - web
+    networks:
+      - appnet
+
+  web:
+    build: ./web-server
+    image: example/web-proxy:latest
+    networks:
+      - appnet
+
+networks:
+  appnet:
+    driver: bridge
